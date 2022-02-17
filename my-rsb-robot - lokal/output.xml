@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1.3 (Python 3.7.5 on win32)" generated="20220215 11:36:35.047" rpa="true" schemaversion="2">
+<suite id="s1" name="Tasks" source="d:\RPA Robocorp\my-rsb-robot - Copy\tasks.robot">
+<test id="s1-t1" name="Get data form Dana">
+<kw name="Open the intranet website">
+<kw name="Open Available Browser" library="RPA.Browser.Selenium">
+<arg>https://dashboard.dana.id/app/</arg>
+<doc>Attempts to open a browser on the user's device from a set of
+supported browsers. Automatically downloads a corresponding webdriver
+if none is already installed.</doc>
+<msg timestamp="20220215 11:36:47.571" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<msg timestamp="20220215 11:36:47.733" level="INFO">Created download root directory: C:\Users\faisal.akbar.ARTAJASA\AppData\Local\robocorp\webdrivers</msg>
+<msg timestamp="20220215 11:36:47.734" level="INFO">Created symlink directory: C:\Users\faisal.akbar.ARTAJASA\AppData\Local\robocorp\webdrivers</msg>
+<msg timestamp="20220215 11:36:47.736" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<msg timestamp="20220215 11:36:53.377" level="INFO">Created Chrome browser with arguments: --disable-dev-shm-usage --disable-web-security --allow-running-insecure-content --no-sandbox</msg>
+<msg timestamp="20220215 11:36:53.377" level="INFO" html="true">&lt;p&gt;Attempted combinations:&lt;/p&gt;&lt;div class="doc"&gt;&lt;table&gt;&lt;tr&gt;&lt;th&gt;Browser&lt;/th&gt;&lt;th&gt;Download&lt;/th&gt;&lt;th&gt;Error&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Chrome&lt;/td&gt;&lt;td&gt;False&lt;/td&gt;&lt;td&gt;Message: 'chromedriver' executable needs to be in PATH. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Chrome&lt;/td&gt;&lt;td&gt;True&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;</msg>
+<msg timestamp="20220215 11:36:53.377" level="INFO">Opening url 'https://dashboard.dana.id/app/'</msg>
+<status status="PASS" starttime="20220215 11:36:47.569" endtime="20220215 11:37:08.727"/>
+</kw>
+<status status="PASS" starttime="20220215 11:36:47.566" endtime="20220215 11:37:08.728"/>
+</kw>
+<kw name="Log in">
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>loginEmailInput</arg>
+<arg>testingmp@mailinator.com</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220215 11:37:08.732" level="INFO">Typing text 'testingmp@mailinator.com' into text field 'loginEmailInput'.</msg>
+<status status="PASS" starttime="20220215 11:37:08.731" endtime="20220215 11:37:09.036"/>
+</kw>
+<kw name="Input Password" library="RPA.Browser.Selenium">
+<arg>//input[@type="password"]</arg>
+<arg>!Password01</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20220215 11:37:09.041" level="INFO">Typing password into text field '//input[@type="password"]'.</msg>
+<msg timestamp="20220215 11:37:09.088" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20220215 11:37:09.224" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20220215 11:37:09.037" endtime="20220215 11:37:09.225"/>
+</kw>
+<kw name="Submit Form" library="RPA.Browser.Selenium">
+<doc>Submits a form identified by ``locator``.</doc>
+<msg timestamp="20220215 11:37:09.227" level="INFO">Submitting form 'None'.</msg>
+<status status="PASS" starttime="20220215 11:37:09.226" endtime="20220215 11:37:09.313"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="RPA.Browser.Selenium">
+<arg>id:portal</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220215 11:37:09.314" endtime="20220215 11:37:12.295"/>
+</kw>
+<status status="PASS" starttime="20220215 11:37:08.729" endtime="20220215 11:37:12.296"/>
+</kw>
+<kw name="Open Disbursement">
+<kw name="Go To" library="RPA.Browser.Selenium">
+<arg>https://dashboard.dana.id/app/dana-disbursement/account</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20220215 11:37:12.305" level="INFO">Opening url 'https://dashboard.dana.id/app/dana-disbursement/account'</msg>
+<status status="PASS" starttime="20220215 11:37:12.303" endtime="20220215 11:37:12.991"/>
+</kw>
+<status status="PASS" starttime="20220215 11:37:12.299" endtime="20220215 11:37:12.993"/>
+</kw>
+<kw name="Collect the results">
+<kw name="Wait Until Element Is Visible" library="RPA.Browser.Selenium">
+<arg>css:div.detail-body</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20220215 11:37:12.998" endtime="20220215 11:37:13.243"/>
+</kw>
+<kw name="Screenshot" library="RPA.Browser.Selenium">
+<arg>css:div.detail-body</arg>
+<arg>${OUTPUT_DIR}${/}Dana.png</arg>
+<doc>Capture page and/or element screenshot.</doc>
+<msg timestamp="20220215 11:37:13.441" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;img alt="screenshot" class="robot-seleniumlibrary-screenshot" src="data:image/png;base64,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" width="400px"&gt;</msg>
+<msg timestamp="20220215 11:37:13.598" level="INFO">Screenshot saved to file: D:\RPA Robocorp\my-rsb-robot - Copy\Dana.png</msg>
+<status status="PASS" starttime="20220215 11:37:13.245" endtime="20220215 11:37:13.599"/>
+</kw>
+<status status="PASS" starttime="20220215 11:37:12.995" endtime="20220215 11:37:13.602"/>
+</kw>
+<kw name="Export the table as PDF">
+<kw name="Wait Until Element Is Visible" library="RPA.Browser.Selenium">
+<arg>css:div.detail-body</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20220215 11:37:13.607" endtime="20220215 11:37:13.635"/>
+</kw>
+<kw name="Get Element Attribute" library="RPA.Browser.Selenium">
+<var>${dana_results_html}</var>
+<arg>css:div.detail-body</arg>
+<arg>outerHTML</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<msg timestamp="20220215 11:37:13.656" level="INFO">${dana_results_html} = &lt;div class="detail-body"&gt;&lt;div class="ant-row"&gt;&lt;div class="ant-col col-detail-item ant-col-lg-24"&gt;&lt;div class="ant-col label-info ant-col-xs-24 ant-col-sm-24 ant-col-md-24 ant-col-lg-8"&gt;Account No&lt;/div&gt;...</msg>
+<status status="PASS" starttime="20220215 11:37:13.637" endtime="20220215 11:37:13.656"/>
+</kw>
+<kw name="Html To Pdf" library="RPA.PDF">
+<arg>${dana_results_html}</arg>
+<arg>${OUTPUT_DIR}${/}dana_results.pdf</arg>
+<doc>Generate a PDF file from HTML content.</doc>
+<msg timestamp="20220215 11:37:13.660" level="INFO">Writing output to file D:\RPA Robocorp\my-rsb-robot - Copy\dana_results.pdf</msg>
+<status status="PASS" starttime="20220215 11:37:13.657" endtime="20220215 11:37:14.629"/>
+</kw>
+<status status="PASS" starttime="20220215 11:37:13.604" endtime="20220215 11:37:14.630"/>
+</kw>
+<kw name="Export the table as Excel">
+<kw name="Wait Until Element Is Visible" library="RPA.Browser.Selenium">
+<arg>css:div.detail-body</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20220215 11:37:14.633" endtime="20220215 11:37:14.653"/>
+</kw>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>css:div.detail-body</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220215 11:37:14.691" level="INFO">${text} = Account No
+20070000014563916516
+Currency
+IDR
+Balance
+Rp3.173
+Account Type
+Merchant Deposit Account</msg>
+<status status="PASS" starttime="20220215 11:37:14.654" endtime="20220215 11:37:14.692"/>
+</kw>
+<kw name="Create File" library="RPA.FileSystem">
+<arg>${OUTPUT_DIR}${/}dana_result_excel.csv</arg>
+<arg>${text}</arg>
+<arg>overwrite=True</arg>
+<doc>Creates a new text file, and writes content if any is given.</doc>
+<status status="PASS" starttime="20220215 11:37:14.693" endtime="20220215 11:37:14.696"/>
+</kw>
+<status status="PASS" starttime="20220215 11:37:14.631" endtime="20220215 11:37:14.697"/>
+</kw>
+<kw name="Export to Text as Variable">
+<kw name="Wait Until Element Is Visible" library="RPA.Browser.Selenium">
+<arg>css:div.detail-body</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20220215 11:37:14.701" endtime="20220215 11:37:14.721"/>
+</kw>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>css:div.detail-body</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220215 11:37:14.758" level="INFO">${text} = Account No
+20070000014563916516
+Currency
+IDR
+Balance
+Rp3.173
+Account Type
+Merchant Deposit Account</msg>
+<status status="PASS" starttime="20220215 11:37:14.722" endtime="20220215 11:37:14.758"/>
+</kw>
+<kw name="Create File" library="RPA.FileSystem">
+<arg>${OUTPUT_DIR}${/}dana_result_text.txt</arg>
+<arg>${text}</arg>
+<arg>overwrite=True</arg>
+<doc>Creates a new text file, and writes content if any is given.</doc>
+<status status="PASS" starttime="20220215 11:37:14.759" endtime="20220215 11:37:14.761"/>
+</kw>
+<status status="PASS" starttime="20220215 11:37:14.698" endtime="20220215 11:37:14.762"/>
+</kw>
+<kw name="Export the Balance as Text">
+<kw name="Wait Until Element Is Visible" library="RPA.Browser.Selenium">
+<arg>css:div.ant-col-lg-16</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20220215 11:37:14.768" endtime="20220215 11:37:14.798"/>
+</kw>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>css:div.ant-col-lg-16</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220215 11:37:14.828" level="INFO">${text} = 20070000014563916516</msg>
+<status status="PASS" starttime="20220215 11:37:14.800" endtime="20220215 11:37:14.829"/>
+</kw>
+<kw name="Create File" library="RPA.FileSystem">
+<arg>${OUTPUT_DIR}${/}dana_result_balance.txt</arg>
+<arg>${text}</arg>
+<arg>overwrite=True</arg>
+<doc>Creates a new text file, and writes content if any is given.</doc>
+<status status="PASS" starttime="20220215 11:37:14.830" endtime="20220215 11:37:14.833"/>
+</kw>
+<status status="PASS" starttime="20220215 11:37:14.764" endtime="20220215 11:37:14.835"/>
+</kw>
+<status status="PASS" starttime="20220215 11:36:47.561" endtime="20220215 11:37:14.838"/>
+</test>
+<doc>Get data from Dana</doc>
+<status status="PASS" starttime="20220215 11:36:35.056" endtime="20220215 11:37:14.845"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tasks</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Tasks">Tasks</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
