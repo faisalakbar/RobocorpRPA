@@ -7,9 +7,18 @@ Library           RPA.PDF
 Library           RPA.Word.Application
 Library           RPA.FileSystem
 Library           RPA.Tables
+Library           RPA.Robocorp.Vault
+
+*** Variables ***
+${URL}=           https://dashboard.dana.id/app/
+${GLOBAL_RETRY_AMOUNT}=    3x
+${GLOBAL_RETRY_INTERVAL}=    0.5s
+
 
 *** Tasks ***
 Get data form Dana
+    Send GET request and keep checking until success
+    Open browser and keep checking until success
     Open the intranet website
     Log in
     Open Disbursement
@@ -19,13 +28,41 @@ Get data form Dana
     Export to Text as Variable
     Export the Balance as Text
 
+
 *** Keywords ***
+Send GET request and keep checking until success
+    Wait Until Keyword Succeeds
+    ...    ${GLOBAL_RETRY_AMOUNT}
+    ...    ${GLOBAL_RETRY_INTERVAL}
+    ...    Send GET request
+
+Send GET request
+    ${headers}=    Create Dictionary    Content-Type    text/plain
+    ${http_response}=    GET
+    ...    url=${URL}/418
+    ...    params=sleep=3000
+    ...    expected_status=418
+    ...    headers=${headers}
+    Log To Console    ${http_response.text}
+    Log    ${http_response.text}
+
+Open browser and keep checking until success
+    Open Available Browser    ${URL}/200?sleep=3000
+    Wait Until Keyword Succeeds
+    ...    ${GLOBAL_RETRY_AMOUNT}
+    ...    ${GLOBAL_RETRY_INTERVAL}
+    ...    Wait Until Page Contains
+    ...    200 OK
+    ...    0.5s
+    Capture Page Screenshot
+
 Open the intranet website
-    Open Available Browser    https://dashboard.dana.id/app/
+    Open Available Browser    ${URL}
 
 Log in
-    Input Text    loginEmailInput    testingmp@mailinator.com
-    Input Password    //input[@type="password"]    !Password01
+    ${secret}=    Get Secret    credentials
+    Input Text    loginEmailInput    ${secret}[username]
+    Input Password    //input[@type="password"]    ${secret}[password]
     Submit Form
     Wait Until Page Contains Element    id:portal
 
@@ -55,6 +92,4 @@ Export the Balance as Text
     Wait Until Element Is Visible    css:div.ant-col-lg-16
     ${text}=    Get Text    css:div.ant-col-lg-16
     Create File    ${OUTPUT_DIR}${/}dana_result_balance.txt    ${text}    overwrite=True
-
-Input to Command Prompt
 
